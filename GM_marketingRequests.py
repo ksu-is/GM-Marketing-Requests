@@ -15,7 +15,7 @@ import datetime
 #path_root = os.path.dirname(os.path.abspath(__file__)) #grab the file system path to the current script file
 #database_file_path = str(path_root)+"/myinventory.db" #construct the path to the database file (only necessary if the current working directory is not the same as the folder where this Python file is located.)
 #if you uncomment the three lines above, be sure to comment out this next line
-database_file_path = "myinventory.db"
+database_file_path = "GM Marketing.db"
 def create_connection(db_file):
     """ create a database connection to the SQLite database
         specified by the db_file
@@ -30,16 +30,14 @@ def create_connection(db_file):
         return None
 
 def insert_data():
-    name = input("Enter the name of the item: ")
-    ndc = input("Enter the national drug code of the item: ")
-    location = input ("Enter the item inventory location: ")
-    availability = input("Enter number of doses left: ")
-    arrivaldate = input("Enter arrival date: ")
-    expirationdate = input("Enter expiration date: ")
+    name_requesting = input("Enter the name of the individual requesting Marketing Materials: ")
+    email_requesting = input("Enter the email address of the individual requesting Marketing Materials: ")
+    location = input ("Enter Enter the name of the property these materials are for: ")
+    date_needed = input("Enter the date these materials are needed by: ")
     changemade = str(now.year) +"/"+str(now.month) +"/"+str(now.day)
     try:      
-        sqlresult = conn.execute("INSERT INTO vaccines (name,ndc,location,availability,arrivaldate,expirationdate,changemade)\
-            values("+"'"+ str(name) +"'" + ",'"+ str(ndc) +"', '"+ str(location) +"','"+ str (availability)+"','"+str(arrivaldate)+"','"+ str (expirationdate)+"','"+str(changemade)+"')")
+        sqlresult = conn.execute("INSERT INTO marketing_requests (name_requesting,email_requesting,location,date_needed,changemade)\
+            values("+"'"+ str(name_requesting) +"'" + ",'"+ str(email_requesting) +"', '"+ str(location) +"','"+ str (date_needed)+"','"+str(changemade)+"')")
         result = conn.commit() #this actually runs the SQL and inserts the data into the database
         if result == None:
             print("*** Data saved to database. ***")
