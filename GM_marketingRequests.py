@@ -66,12 +66,29 @@ GMP28 = [0,"3XL","Purple","GM Mens Polo"]
 def search():
     search_item = input("Enter the Item ID: ")
     search_quantity = input("Enter Quantity: ")
-    if search_quantity <= search_item[0]:
+    if search_quantity <= search_item.upper()[0]:
         print("SUCCESS, we have what you are looking for!")
-    else:
-        print("Looks like we are temporarally out of that item.")
+        request = input("Do you want to submit a request to the marketing department? (Y/N): ")
+        if request.isalpha():
+            if request.lower() == "y":
+                print(type(search_item[0]))
+                orig_quant = search_item[0]
+                search_item[0] = int(orig_quant)-int(search_quantity)
+            else:
+                pass
+        else:
+            print("Invalid Selection")
 
 search()
+        
+
+def request(req_avail,req_search_item,req_search_quantity):
+    if req_avail == 1:
+        req_search_item[0] -= req_search_quantity
+    elif req_avail == 0:
+        print("Looks like we are temporarally out of that item.")
+
+
    
 def view_inventory():
     print("GMP1:",GMP1)
