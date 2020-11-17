@@ -62,6 +62,17 @@ GMP26 = [10,"XXL","Purple","GM Mens Polo"]
 GMP27 = [0,"XXL-Tall","Purple","GM Mens Polo"]
 GMP28 = [0,"3XL","Purple","GM Mens Polo"]
 
+#Searches inventory for a secific item, specified by the user
+def search():
+    search_item = input("Enter the Item ID: ")
+    search_quantity = input("Enter Quantity: ")
+    if search_quantity <= search_item[0]:
+        print("SUCCESS, we have what you are looking for!")
+    else:
+        print("Looks like we are temporarally out of that item.")
+
+search()
+   
 def view_inventory():
     print("GMP1:",GMP1)
     print("GMP2:",GMP2)
@@ -91,6 +102,3 @@ def view_inventory():
     print("GMP26:",GMP26)
     print("GMP27:",GMP27)
     print("GMP28:",GMP28)
-
-
-view_inventory()
