@@ -1,159 +1,96 @@
-#imports SQLite database for GM Marketing Uniform Inventory
-#import sqlite3
-#conn = sqlite3.connect('GM Marketing.db')
+# import datetime
+
+# #imports SQLite database for GM Marketing Uniform Inventory
+# import sqlite3
+# from _sqlite3 import Error
+# conn = sqlite3.connect('GM Marketing.db')
+
+# def insert_data():
+#     name_reqursting = input("Enter the name of the person requesting materials: ")
+#     email_requesting = input("Enter the email of the person requesting materials: ")
+#     location = input ("Enter the item property the materials are needed for: ")
+#     date_needed = input("Enter the date needed: ")
+#     #changemade = str(now.year) +"/"+str(now.month) +"/"+str(now.day)
+#     try:      
+#         sqlresult = conn.execute("INSERT INTO marketing_requests (name_requesting,email_requesting,location,date_needed,changemade)\
+#             values("+"'"+ str(name_reqursting) +"'" + ",'"+ str(email_requesting) +"', '"+ str(location) +"','"+ str (date_needed))
+#         result = conn.commit() #this actually runs the SQL and inserts the data into the database
+#         if result == None:
+#             print("*** Data saved to database. ***")
+#     except Error as e:
+#         print ("*** Insert error: ",e)
+#         pass
+
+# insert_data()
 
 
-#def request():
-#    name_request = input("Who is requesting these items?: ")
+#Uniform Inventory Items
 
-import sqlite3
-#importing Error this way let's us refer to it by this name instead of sqlite3.Error
-from sqlite3 import Error 
-import datetime
-#if you code is not connecting to the DB, uncomment the next three lines and read the comments. Also, you may need \ instead of / before the DB file name in windows
-#import os
-#path_root = os.path.dirname(os.path.abspath(__file__)) #grab the file system path to the current script file
-#database_file_path = str(path_root)+"/myinventory.db" #construct the path to the database file (only necessary if the current working directory is not the same as the folder where this Python file is located.)
-#if you uncomment the three lines above, be sure to comment out this next line
-database_file_path = "GM Marketing.db"
-def create_connection(db_file):
-    """ create a database connection to the SQLite database
-        specified by the db_file
-    :param db_file: database file
-    :return: Connection object or None
-    """
-    try:
-        connection = sqlite3.connect(db_file)
-        return connection
-    except Error as e:
-        print(e)
-        return None
+#GM Mens Polos - Black
+GMP1 = [4,"S","Black","GM Mens Polo"]
+GMP2 = [0,"M","Black","GM Mens Polo"]
+GMP3 = [0,"L","Black","GM Mens Polo"]
+GMP4 = [0,"XL","Black","GM Mens Polo"]
+GMP5 = [6,"XXL","Black","GM Mens Polo"]
+GMP6 = [2,"XXL-Tall","Black","GM Mens Polo"]
+GMP7 = [0,"3XL","Grey","GM Mens Polo"]
 
-def insert_data():
-    name_requesting = input("Enter the name of the individual requesting Marketing Materials: ")
-    email_requesting = input("Enter the email address of the individual requesting Marketing Materials: ")
-    location = input ("Enter Enter the name of the property these materials are for: ")
-    date_needed = input("Enter the date these materials are needed by: ")
-    changemade = str(now.year) +"/"+str(now.month) +"/"+str(now.day)
-    try:      
-        sqlresult = conn.execute("INSERT INTO marketing_requests (name_requesting,email_requesting,location,date_needed,changemade)\
-            values("+"'"+ str(name_requesting) +"'" + ",'"+ str(email_requesting) +"', '"+ str(location) +"','"+ str (date_needed)+"','"+str(changemade)+"')")
-        result = conn.commit() #this actually runs the SQL and inserts the data into the database
-        if result == None:
-            print("*** Data saved to database. ***")
-    except Error as e:
-        print ("*** Insert error: ",e)
-        pass
-                                 
-def view_data():
-    try:
-        cursor = conn.execute ("SELECT id,name, ndc,location,availability,arrivaldate, expirationdate,changemade FROM vaccines" )
-        alldata = []
-        alldata.append(["ID","Name","NDC","Location","Availability","Arrival Date","Expiration Date","Last Update"])
-        for row in cursor:
-            thisrow=[]
-            for x in range(8):
-                thisrow.append(row[x])
-            alldata.append(thisrow)
-        return alldata
-    except Error as e:
-        print (e)
-        pass
+#GM Mens Polos - Grey
+GMP8 = [4,"S","Grey","GM Mens Polo"]
+GMP9 = [0,"M","Grey","GM Mens Polo"]
+GMP10 = [0,"L","Grey","GM Mens Polo"]
+GMP11 = [8,"XL","Grey","GM Mens Polo"]
+GMP12 = [0,"XXL","Grey","GM Mens Polo"]
+GMP13 = [0,"XXL-Tall","Grey","GM Mens Polo"]
+GMP14 = [0,"3XL","Grey","GM Mens Polo"]
 
-def update_data():
-    for row in view_data():
-            thisrow = "  --> "
-            for item in row:
-                thisrow += str(item) + "  "
-            print (thisrow)
-    update_ID = input("Enter the ID of the data record to edit: ")
-    print('''
-        1 = edit name
-        2 = edit ndc
-        3 = edit location
-        4 = edit availability
-        5 = edit arrivaldate
-        6 = edit expirationdate''')
+#GM Womens Polo - Purple
+GMP15 = [8,"S","Purple","GM Womens Polo"]
+GMP16 = [8,"M","Purple","GM Womens Polo"]
+GMP17 = [8,"L","Purple","GM Womens Polo"]
+GMP18 = [6,"XL","Purple","GM Womens Polo"]
+GMP19 = [8,"XXL","Purple","GM Womens Polo"]
+GMP20 = [0,"XXL-Tall","Purple","GM Womens Polo"]
+GMP21 = [0,"3XL","Purple","GM Womens Polo"]
 
-    feature = input("Enter which feature of the data do you want to edit: ")
-    update_value = input ("Editing "+feature+ ": enter the new value: ")
+#GM Mens Polo - Purple
+GMP22 = [6,"S","Purple","GM Mens Polo"]
+GMP23 = [0,"M","Purple","GM Mens Polo"]
+GMP24 = [0,"L","Purple","GM Mens Polo"]
+GMP25 = [12,"XL","Purple","GM Mens Polo"]
+GMP26 = [10,"XXL","Purple","GM Mens Polo"]
+GMP27 = [0,"XXL-Tall","Purple","GM Mens Polo"]
+GMP28 = [0,"3XL","Purple","GM Mens Polo"]
 
-    if(feature == "1"):
-        sql = "UPDATE vaccines set name = ? where id =  ?"
-    elif (feature == "2"):
-       sql = "UPDATE vaccines set ndc = ? where id =  ?" 
-    elif (feature == "3"):
-       sql = "UPDATE vaccines set location  = ? where id =  ?"
-    elif (feature == "4"):
-       sql = "UPDATE vaccines set availability  = ? where id =  ?"
-    elif (feature == "5"):
-       sql = "UPDATE vaccines set arrivaldate  = ? where id =  ?"
-    elif (feature == "6"):
-       sql = "UPDATE vaccines set expirationdate = ? where id =  ?"  
-        
-    try:
-        #if we call the connection execute method it invisibly creates a cursor for us
-        conn.execute(sql, (update_value,update_ID))
-        #update the change made date log
-        sql = "UPDATE vaccines set changemade = ? where id =  ?"
-        changemade = str(now.year) +"/"+str(now.month) +"/"+str(now.day)
-        conn.execute(sql, (changemade,update_ID))
-        conn.commit() 
-        
-    except Error as e:
-        print(e)
-        pass
+def view_inventory():
+    print("GMP1:",GMP1)
+    print("GMP2:",GMP2)
+    print("GMP3:",GMP3)
+    print("GMP4:",GMP4)
+    print("GMP5:",GMP5)
+    print("GMP6:",GMP6)
+    print("GMP7:",GMP7)
+    print("GMP8:",GMP8)
+    print("GMP9:",GMP9)
+    print("GMP10:",GMP10)
+    print("GMP11:",GMP11)
+    print("GMP12:",GMP12)
+    print("GMP13:",GMP13)
+    print("GMP14:",GMP14)
+    print("GMP15:",GMP15)
+    print("GMP16:",GMP16)
+    print("GMP17:",GMP17)
+    print("GMP18:",GMP18)
+    print("GMP19:",GMP19)
+    print("GMP20:",GMP20)
+    print("GMP21:",GMP21)
+    print("GMP22:",GMP22)
+    print("GMP23:",GMP23)
+    print("GMP24:",GMP24)
+    print("GMP25:",GMP25)
+    print("GMP26:",GMP26)
+    print("GMP27:",GMP27)
+    print("GMP28:",GMP28)
 
-def delete_data():
-    id_  =  input("Enter the ID for the data record to delete:")
-    cursor = conn.cursor() #This sets a spot in the database connection (cursor) for targeted retrieval
-    cursor.execute("select name from vaccines where ID = "+id_) #create an object referencing the data
-    delete_item = cursor.fetchall() # get the data
-    confirm = input("Are you sure you want to delete " + id_ + " " + str(delete_item[0]) + "? (Enter 'y' to confirm.)")
-    if confirm.lower() == "y":
-        try:
-            delete_sql = "DELETE FROM vaccines WHERE id = ?"
-            conn.execute(delete_sql,id_)
-            result = conn.commit() #capture the result of the commit and use it to check the result
-            if result == None:
-                print (id_ + " " + str(delete_item[0]) + " deleted.")
-            else:
-                print ("Deletion failed during SQL execution.")
-        except Error as e:
-            print (e)
-            pass
-    else:
-        print("Deletion aborted.")
 
-conn = create_connection(database_file_path)
-now = datetime.datetime.now()
-
-if conn:
-    print ("Connected to database: ",conn)  
-else:
-    print("Error connecting to database.")
-
-while True:
-    print("Welcome to the Vaccine Management System!")
-    print("1 to view the data")
-    print("2 to insert a new data record")
-    print("3 to update a data record")
-    print("4 to delete a data record")
-    print("X to exit")
-    name = input ("Choose an operation to perform: ")
-    if (name =="1"):
-        for row in view_data():
-            thisrow = "  --> "
-            for item in row:
-                thisrow += str(item) + "  "
-            print (thisrow)
-    elif(name == "2"):
-        insert_data()
-    elif(name == "3"):
-        update_data()
-    elif(name == "4"):
-        delete_data()
-    elif(name == "X"):
-        conn.close()
-        break
-
+view_inventory()
