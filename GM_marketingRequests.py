@@ -1,9 +1,18 @@
 # import datetime
 
 # #imports SQLite database for GM Marketing Uniform Inventory
-# import sqlite3
+import sqlite3
 # from _sqlite3 import Error
-# conn = sqlite3.connect('GM Marketing.db')
+try: 
+    conn = sqlite3.connect('GM_Marketing.db')
+    print ("Opened Database Successfully!")
+except Exception as e:
+    print("Error durring connection: ", str(e))
+
+results = conn.execute("SELECT * FROM marketing_requests")
+
+for row in results:
+    print (row)
 
 # def insert_data():
 #     name_reqursting = input("Enter the name of the person requesting materials: ")
@@ -79,7 +88,7 @@ def search():
         else:
             print("Invalid Selection")
 
-search()
+#search()
         
 
 def request(req_avail,req_search_item,req_search_quantity):
