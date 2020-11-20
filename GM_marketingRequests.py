@@ -9,11 +9,12 @@ try:
 except Exception as e:
     print("Error durring connection: ", str(e))
 
-results = conn.execute("SELECT * FROM UNIFORM_INVENTORY")
+uniform_inventory = conn.execute("SELECT * FROM UNIFORM_INVENTORY")
 
 
-for row in results:
-    print (row)
+
+# for row in results:
+#     print (row)
 
 # def insert_data():
 #     name_reqursting = input("Enter the name of the person requesting materials: ")
@@ -37,40 +38,40 @@ for row in results:
 #Uniform Inventory Items
 
 #GM Mens Polos - Black
-GMP1 = [4,"S","Black","GM Mens Polo"]
-GMP2 = [0,"M","Black","GM Mens Polo"]
-GMP3 = [0,"L","Black","GM Mens Polo"]
-GMP4 = [0,"XL","Black","GM Mens Polo"]
-GMP5 = [6,"XXL","Black","GM Mens Polo"]
-GMP6 = [2,"XXL-Tall","Black","GM Mens Polo"]
-GMP7 = [0,"3XL","Grey","GM Mens Polo"]
+# GMP1 = [4,"S","Black","GM Mens Polo"]
+# GMP2 = [0,"M","Black","GM Mens Polo"]
+# GMP3 = [0,"L","Black","GM Mens Polo"]
+# GMP4 = [0,"XL","Black","GM Mens Polo"]
+# GMP5 = [6,"XXL","Black","GM Mens Polo"]
+# GMP6 = [2,"XXL-Tall","Black","GM Mens Polo"]
+# GMP7 = [0,"3XL","Grey","GM Mens Polo"]
 
 #GM Mens Polos - Grey
-GMP8 = [4,"S","Grey","GM Mens Polo"]
-GMP9 = [0,"M","Grey","GM Mens Polo"]
-GMP10 = [0,"L","Grey","GM Mens Polo"]
-GMP11 = [8,"XL","Grey","GM Mens Polo"]
-GMP12 = [0,"XXL","Grey","GM Mens Polo"]
-GMP13 = [0,"XXL-Tall","Grey","GM Mens Polo"]
-GMP14 = [0,"3XL","Grey","GM Mens Polo"]
+# GMP8 = [4,"S","Grey","GM Mens Polo"]
+# GMP9 = [0,"M","Grey","GM Mens Polo"]
+# GMP10 = [0,"L","Grey","GM Mens Polo"]
+# GMP11 = [8,"XL","Grey","GM Mens Polo"]
+# GMP12 = [0,"XXL","Grey","GM Mens Polo"]
+# GMP13 = [0,"XXL-Tall","Grey","GM Mens Polo"]
+# GMP14 = [0,"3XL","Grey","GM Mens Polo"]
 
 #GM Womens Polo - Purple
-GMP15 = [8,"S","Purple","GM Womens Polo"]
-GMP16 = [8,"M","Purple","GM Womens Polo"]
-GMP17 = [8,"L","Purple","GM Womens Polo"]
-GMP18 = [6,"XL","Purple","GM Womens Polo"]
-GMP19 = [8,"XXL","Purple","GM Womens Polo"]
-GMP20 = [0,"XXL-Tall","Purple","GM Womens Polo"]
-GMP21 = [0,"3XL","Purple","GM Womens Polo"]
+# GMP15 = [8,"S","Purple","GM Womens Polo"]
+# GMP16 = [8,"M","Purple","GM Womens Polo"]
+# GMP17 = [8,"L","Purple","GM Womens Polo"]
+# GMP18 = [6,"XL","Purple","GM Womens Polo"]
+# GMP19 = [8,"XXL","Purple","GM Womens Polo"]
+# GMP20 = [0,"XXL-Tall","Purple","GM Womens Polo"]
+# GMP21 = [0,"3XL","Purple","GM Womens Polo"]
 
 #GM Mens Polo - Purple
-GMP22 = [6,"S","Purple","GM Mens Polo"]
-GMP23 = [0,"M","Purple","GM Mens Polo"]
-GMP24 = [0,"L","Purple","GM Mens Polo"]
-GMP25 = [12,"XL","Purple","GM Mens Polo"]
-GMP26 = [10,"XXL","Purple","GM Mens Polo"]
-GMP27 = [0,"XXL-Tall","Purple","GM Mens Polo"]
-GMP28 = [0,"3XL","Purple","GM Mens Polo"]
+# GMP22 = [6,"S","Purple","GM Mens Polo"]
+# GMP23 = [0,"M","Purple","GM Mens Polo"]
+# GMP24 = [0,"L","Purple","GM Mens Polo"]
+# GMP25 = [12,"XL","Purple","GM Mens Polo"]
+# GMP26 = [10,"XXL","Purple","GM Mens Polo"]
+# GMP27 = [0,"XXL-Tall","Purple","GM Mens Polo"]
+# GMP28 = [0,"3XL","Purple","GM Mens Polo"]
 
 #Searches inventory for a secific item, specified by the user
 def search():
