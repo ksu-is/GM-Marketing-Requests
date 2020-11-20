@@ -9,7 +9,8 @@ try:
 except Exception as e:
     print("Error durring connection: ", str(e))
 
-results = conn.execute("SELECT * FROM marketing_requests")
+results = conn.execute("SELECT * FROM UNIFORM_INVENTORY")
+
 
 for row in results:
     print (row)
