@@ -24,31 +24,54 @@ from _sqlite3 import Error
 # quantity = input("What Quantity Is Needed: ")
 
 #Request Form
-try:
-    sqliteConnection = sqlite3.connect('GM_Marketing.db')
-    cursor = sqliteConnection.cursor()
-    print("Successfully Connected to SQLite")
+def submit_request ():
+    try:
+        sqliteConnection = sqlite3.connect('GM_Marketing.db')
+        cursor = sqliteConnection.cursor()
+        print("Successfully Connected to SQLite")
 
-    name = input("Name of Individual Requesting Materials: ")
-    email = input("Email of Individual Requesting Materials: ")
-    date_needed = input("Date Materials are Needed: ")
-    pprt = input("What Property Are These Materials For: ")
-    
-    cursor.execute("""INSERT INTO marketingRequests
-                          (nameRequesting, emailRequesting, property, dateNeeded) 
-                           VALUES 
-                          (?,?,?,?)""", (name, email, date_needed, pprt))
+        name = input("Name of Individual Requesting Materials: ")
+        email = input("Email of Individual Requesting Materials: ")
+        date_needed = input("Date Materials are Needed: ")
+        pprt = input("What Property Are These Materials For: ")
+        
+        cursor.execute("""INSERT INTO marketingRequests
+                            (nameRequesting, emailRequesting, property, dateNeeded) 
+                            VALUES 
+                            (?,?,?,?)""", (name, email, pprt, date_needed))
 
-    sqliteConnection.commit()
-    print("Record inserted successfully into SqliteDb_developers table ", cursor.rowcount)
-    cursor.close()
+        sqliteConnection.commit()
+        print("Record inserted successfully into SqliteDb_developers table ", cursor.rowcount)
+        cursor.close()
 
-except sqlite3.Error as error:
-    print("Failed to insert data into sqlite table", error)
-finally:
-    if (sqliteConnection):
-        sqliteConnection.close()
-        print("The SQLite connection is closed")
+    except sqlite3.Error as error:
+        print("Failed to insert data into sqlite table", error)
+    finally:
+        if (sqliteConnection):
+            sqliteConnection.close()
+            print("The SQLite connection is closed")
+
+#view requests
+def view_requests():
+    try: 
+        con = sqlite3.connect('GM_Marketing.db')
+        cur = con.cursor()
+        print("Successfully Connected to SQLite")
+        for row in cur.execute('SELECT * FROM marketingRequests;'):
+            print(row)
+    except Exception as e:
+        print("Error durring connection: ", str(e))
+
+
+#menu
+while True:
+    selection = input("What do you want to do?: ")
+    if selection == "1":
+        submit_request()
+    elif selection == "2":
+        view_requests()
+    else:
+        break
 
 
 #Flask webpage
