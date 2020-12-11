@@ -2,18 +2,74 @@
 
 # #imports SQLite database for GM Marketing Uniform Inventory
 import sqlite3
-# from _sqlite3 import Error
-try: 
-    conn = sqlite3.connect('GM_Marketing.db')
-    print ("Opened Database Successfully!")
-except Exception as e:
-    print("Error durring connection: ", str(e))
+from _sqlite3 import Error
+# try: 
+#     conn = sqlite3.connect('GM_Marketing.db')
+#     print ("Opened Database Successfully!")
+# except Exception as e:
+#     print("Error durring connection: ", str(e))
 
-uniform_inventory = conn.execute("SELECT * FROM UNIFORM_INVENTORY")
+# uniform_inventory = conn.execute("SELECT * FROM UNIFORM_INVENTORY")
 
 
 
-# for row in results:
+
+
+#Request Form Inputs
+# name = input("Name of Individual Requesting Materials: ")
+# email = input("Email of Individual Requesting Materials: ")
+# date_needed = input("Date Materials are Needed: ")
+# #item_needed = 
+#property = input("What Property Are These Materials For: ")
+# quantity = input("What Quantity Is Needed: ")
+
+#Request Form
+try:
+    sqliteConnection = sqlite3.connect('GM_Marketing.db')
+    cursor = sqliteConnection.cursor()
+    print("Successfully Connected to SQLite")
+
+    name = input("Name of Individual Requesting Materials: ")
+    email = input("Email of Individual Requesting Materials: ")
+    date_needed = input("Date Materials are Needed: ")
+    pprt = input("What Property Are These Materials For: ")
+    
+    cursor.execute("""INSERT INTO marketingRequests
+                          (nameRequesting, emailRequesting, property, dateNeeded) 
+                           VALUES 
+                          (?,?,?,?)""", (name, email, date_needed, pprt))
+
+    sqliteConnection.commit()
+    print("Record inserted successfully into SqliteDb_developers table ", cursor.rowcount)
+    cursor.close()
+
+except sqlite3.Error as error:
+    print("Failed to insert data into sqlite table", error)
+finally:
+    if (sqliteConnection):
+        sqliteConnection.close()
+        print("The SQLite connection is closed")
+
+
+#Flask webpage
+# from flask import Flask, render_template, request
+# app=Flask(__name__)
+# @app.route('/greet', methods=['POST'])
+# def greet():
+#     inputName = request.form['myName']
+#     ip = request.remote_addr
+#     #write data to file or to DB
+#     inputName = inputName.upper()+" hi!  Visiting from " + str(ip)
+#     return render_template("home.html",myName=inputName)
+# @app.route('/')
+# def home():
+    
+#     return render_template("home.html",myName="")
+
+# if __name__=="__main__":
+#     app.run(debug=True)
+
+# for row in uniform_inventory:
 #     print (row)
 
 # def insert_data():
