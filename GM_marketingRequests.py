@@ -1,12 +1,12 @@
 import sqlite3
 
 #CREATE DATABASE AND
-# conn = sqlite3.connect('gm_marketing.db')
-# print ("Opened database successfully")
+conn = sqlite3.connect('gm_marketing.db')
+print ("Opened database successfully")
 
-# conn.execute('CREATE TABLE requests (name TEXT, email TEXT, property TEXT, date_needed TEXT)')
-# print ("Table created successfully")
-# conn.close()
+conn.execute('CREATE TABLE requests (name TEXT, email TEXT, property TEXT, date_needed TEXT)')
+print ("Table created successfully")
+conn.close()
 
 #WEB VIEWS
 from flask import Flask, render_template, request
