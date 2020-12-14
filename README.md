@@ -1,6 +1,11 @@
 # GM-Marketing-Requests
 GM Marketing Requests will act as an inventory system and a website to submit requests for new materials
 
+## Required
+* sqlite3
+* flask
+* wtforms
+
 ## Functions
 * Customer Experience Managers will have access to a webpage that allows them to submit requests for marketing materials.
   * If the Customer Experience Manager is requesting uniforms, they will be notified if the items they are requesting are not in inventory.
