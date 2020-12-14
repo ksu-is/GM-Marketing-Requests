@@ -73,6 +73,65 @@ while True:
     else:
         break
 
+#Flask Form
+# from flask_wtf import FlaskForm
+# from wtforms import StringField, TextField, SubmitField
+# from wtforms.validators import DataRequired, Length
+
+
+# class RequestForm(FlaskForm):
+#     """Requrst Form."""
+#     name = StringField(
+#         'Name',
+#         [DataRequired()]
+#     )
+#     email = StringField(
+#         'Email',
+#         [
+#             Email(message=('Not a valid email address.')),
+#             DataRequired()
+#         ]
+#     )
+#     ppty = StringField(
+#         'Property',
+#         [
+#             Email(message=('Not a valid email address.')),
+#             DataRequired()
+#         ]
+#     )
+#     date = StringField(
+#         'Date Needed',
+#         [
+#             Email(message=('Not a valid email address.')),
+#             DataRequired()
+#         ]
+   
+#     #recaptcha = RecaptchaField()
+#     #submit = SubmitField('Submit')
+
+# Flask App
+# from flask import (
+#     Flask,
+#     url_for,
+#     render_template,
+#     redirect
+# )
+# from .forms import RequestForm
+
+
+# app = Flask(__name__, instance_relative_config=False)
+# app.config.from_object('config.Config')
+
+
+# @app.route('/', methods=('GET', 'POST'))
+# def request():
+#     form = RequestForm()
+#     if form.validate_on_submit():
+#         return redirect(url_for('success'))
+#     return render_template(
+#         'index.html',
+#         form=form
+#     )
 
 #Flask webpage
 # from flask import Flask, render_template, request
